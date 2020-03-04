@@ -1,0 +1,22 @@
+<div>
+    <input [(ngModel)]="searchText" placeholder="Search Users">
+</div>
+<div>
+    <h3>
+        Users Listing
+    </h3>
+    <ol>
+        <li style="margin-left: 10px;" *ngFor="let user of users | searchFilter : searchText : ['username', 'email', 'website']">
+            <div style="width: 30%; display: flex; justify-content: space-between;">
+                <a routerLink="/user/{{user.id}}" [state]="user">{{ user.username }}</a>
+                <a routerLink="/reactive-form/{{user.id}}">(Edit)</a>
+                <a [routerLink]="[]" (click)="onDelete(user)">(Delete)</a>
+            </div>
+        </li>
+    </ol>
+</div>
+<div>
+    <a [routerLink]="'/reactive-form'">
+        Create User
+    </a>
+</div>

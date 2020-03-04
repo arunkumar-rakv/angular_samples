@@ -1,0 +1,45 @@
+<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+    <div class="form-group" style="margin-bottom: 10px;">
+        <label class="reactiveFormLabel">ID:</label>
+        <input type="number" formControlName="id">
+        <span *ngIf="formSubmitted && reactiveFormControls.id.errors" style="margin-left: 10px;">
+            <span *ngIf="reactiveFormControls.id.errors.required">ID is required</span>
+        </span>
+    </div>
+    <div class="form-group" style="margin-bottom: 10px;">
+        <label class="reactiveFormLabel">User Name:</label>
+        <input type="text" formControlName="username">
+        <span *ngIf="formSubmitted && reactiveFormControls.username.errors" style="margin-left: 10px;">
+            <span *ngIf="reactiveFormControls.username.errors.required">Username is required</span>
+        </span>
+    </div>
+    <div class="form-group" style="margin-bottom: 10px;">
+        <label class="reactiveFormLabel">Email:</label>
+        <input type="text" formControlName="email">
+        <span *ngIf="formSubmitted && reactiveFormControls.email.errors" style="margin-left: 10px;">
+            <span *ngIf="reactiveFormControls.email.errors.required">Email is required</span>
+            <span *ngIf="reactiveFormControls.email.errors.email">Email must be a valid email address</span>
+            <span *ngIf="reactiveFormControls.email.errors.emailTaken">Email Already</span>
+        </span>
+    </div>
+    <div class="form-group" style="margin-bottom: 10px;">
+        <label class="reactiveFormLabel">Phone:</label>
+        <input type="text" formControlName="phone">
+        <span *ngIf="formSubmitted && reactiveFormControls.phone.errors" style="margin-left: 10px;">
+            <span *ngIf="reactiveFormControls.phone.errors.required">Phone is required</span>
+        </span>
+    </div>
+    <div class="form-group" style="margin-bottom: 10px;">
+        <label class="reactiveFormLabel">Website:</label>
+        <input type="text" formControlName="website">
+        <span *ngIf="formSubmitted && reactiveFormControls.website.errors" style="margin-left: 10px;">
+            <span *ngIf="reactiveFormControls.website.errors.required">Website is required</span>
+        </span>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+<div>
+    <p>Form Values</p>
+    <p>ID: {{ reactiveForm.value.id }}</p>
+    <p>Username: {{ reactiveForm.value.username }}</p>
+</div>
